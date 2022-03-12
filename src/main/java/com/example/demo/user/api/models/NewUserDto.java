@@ -11,15 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class NewUserDto {
 
-    private String fullname;
-
+    private String name;
     private String password;
 
-    private String email;
-
-    private LocalDate birthday;
-
-    private String number;
-
-    private String photo;
 }

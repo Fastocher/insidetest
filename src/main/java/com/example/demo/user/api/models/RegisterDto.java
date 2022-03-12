@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegisterDto {
 
-    private String login;
+    private String name;
     private String token;
 
 

@@ -1,6 +1,7 @@
 package com.example.demo.user.api.controller;
 
 import com.example.demo.user.api.models.JwtRequest;
+import com.example.demo.user.api.models.MessageDto;
 import com.example.demo.user.api.models.NewUserDto;
 import com.example.demo.user.api.service.IUserService;
 import com.example.demo.user.impl.entity.UserEntity;
@@ -34,36 +35,13 @@ public class UserController {
         return ResponseEntity.ok(userService.registerUser(newUserDto));
     }
 
-    @GetMapping("/id")
-    public ResponseEntity<?> getUser (@RequestParam Long id){
-        return ResponseEntity.ok(userService.getUser(id));
+    @PostMapping("/msg")
+    public ResponseEntity<?> saveMessage(@Valid @RequestBody MessageDto messageDto) throws Exception {
+        if(messageDto.getMessage()!= null && messageDto.getMessage().startsWith("history ")){
+            return ResponseEntity.ok(userService.printMessages(messageDto));
+        } else{
+            userService.doMessage(messageDto);
+            return ResponseEntity.ok("Message saved");
+        }
     }
-
-    @GetMapping("/name")
-    public ResponseEntity<?> getUserByID (@RequestParam String name){
-        return ResponseEntity.ok(userService.getUserByName(name));
-    }
-
-    @GetMapping("/bday")
-    public ResponseEntity<?> getUserByBirthday (@RequestParam String date){
-        return ResponseEntity.ok(userService.getUserByBirthday(date));
-    }
-
-    @GetMapping("/tel")
-    public ResponseEntity<?> getUserBytel (@RequestParam String number){
-        return ResponseEntity.ok(userService.getUserBytel(number));
-    }
-
-    @PostMapping("/new")
-    public ResponseEntity<?> setNewUser(@RequestBody NewUserDto newUserDto){
-        userService.setNewUser(newUserDto);
-        return ResponseEntity.ok().body("User successfully added!");
-    }
-
-    @DeleteMapping("/del")
-    public ResponseEntity<?> deleteBooking(@RequestParam Long id){
-        userService.deleteUser(id);
-        return ResponseEntity.ok().body("Successfully delete user");
-    }
-
 }

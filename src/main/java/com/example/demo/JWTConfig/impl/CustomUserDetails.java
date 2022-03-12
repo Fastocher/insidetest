@@ -25,7 +25,7 @@ public class CustomUserDetails implements UserDetails {
 
     public static CustomUserDetails fromUserEntityToCustomUserDetails(UserEntity userEntity) {
         CustomUserDetails customUserDetails = new CustomUserDetails();
-        customUserDetails.login = userEntity.getFullname();
+        customUserDetails.login = userEntity.getName();
         customUserDetails.password = userEntity.getPassword();
         return customUserDetails;
     }

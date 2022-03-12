@@ -24,16 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-//    @Autowired
-//    private UserDetailsService UserDetailsService;
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
-//        authenticationManagerBuilder.userDetailsService(UserDetailsService).passwordEncoder(passwordEncoder());
-//    }
 
 
     @Bean

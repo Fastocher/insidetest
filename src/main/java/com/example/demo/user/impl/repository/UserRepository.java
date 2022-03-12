@@ -10,8 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity,Long> {
-    public List<UserEntity> findAllByFullnameContaining (String name);
-    public List<UserEntity> findAllByBirthday(LocalDate date);
-    public UserEntity findByNumberContaining(String number);
-    public UserEntity findByFullname(String name);
+    public UserEntity findByName(String name);
 }
