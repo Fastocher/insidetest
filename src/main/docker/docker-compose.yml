@@ -5,10 +5,13 @@ services:
     build:
       context: services/postgres
       dockerfile: Dockerfile
+    ports:
+      - 5433:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=dockerDB
       - POSTGRES_PASSWORD=1234
+    image: 'fastocher/inside_test_bd'
     volumes:
       - "db-data:/var/lib/postgresql/data"
 
@@ -22,9 +25,9 @@ services:
       - PORT=8091
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres/dockerDB
       - JS_URL=http://localhost
-    image: 'my-java-application'
+    image: 'fastocher/inside_test_app'
     ports:
-      - 8091:8091
+      - 8091:8080
     depends_on:
       - postgres
 
